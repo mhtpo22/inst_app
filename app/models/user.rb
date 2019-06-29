@@ -7,7 +7,12 @@ class User < ApplicationRecord
   has_many :followers, through: 'passive_relationships', source: 'follower'
   
   validates :username, presence: true, length: { minmum: 1, maximum: 10 }
-  validates :userid, presence: true, uniqueness: true,length: { minmum: 4, maximum: 10  }, format: { with: /\A[a-zA-Z0-9]+\z/ }, format: { with: /\A(?!.*(user|login|logout|signup|password)).+\z/}
+  validates :userid,
+    presence: true,
+    uniqueness: true,
+    length: { minmum: 4, maximum: 10  },
+    format:{ with: /\A[a-zA-Z0-9]+\z/ }
+    #format: { with: /\A(?!.*(user|login|logout|signup|password)).+\z/}
    
   def feed
     following_ids = "SELECT followed_id FROM relationships
