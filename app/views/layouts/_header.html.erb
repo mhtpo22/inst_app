@@ -1,0 +1,38 @@
+    <div class="navbar is-inline-flex is-transparent navbar is-fixed-top">
+        <div class="navbar-brand">
+
+                <%= image_tag("logo.svg", :size => "100x40", :alt => "") %>
+
+        </div>
+        <div class="navbar-menu">
+            <div class="navbar-item">
+                <div class="control has-icons-left">
+                    <input class="input is-small has-text-centered" type="text" placeholder="search">
+                    <span class="icon is-left is-small">
+                        <i class="material-icons">search</i>
+                    </span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="navbar-item is-flex-touch">
+            <% if user_signed_in? %>
+                <a class="navbar-item">
+                    <li class="material-icons"><%= link_to "ホーム",root_path %></li>
+                </a>
+                <a class="navbar-item">
+                    <li class="material-icons"><%= link_to '設定', edit_user_registration_path %></li>
+                </a>
+                <a class="navbar-item">
+                    <li class="material-icons"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+                </a>
+            <% else %>
+                <a class="navbar-item">
+                    <li class="material-icons"><%= link_to 'サインアップ', new_user_registration_path %></li>
+                </a>
+                <a class="navbar-item">
+                    <li class="material-icons"><%= link_to 'ログイン', new_user_session_path %></li>
+                </a>
+            <% end %>
+        </div>
+    </div>
