@@ -18,7 +18,12 @@
                 </div>
                 <div class="card-image">
                     <figure class="image is-4by3">
-                        <img src="https://source.unsplash.com/random/1280x960" alt="Placeholder image">
+                    <% if micropost.image.url %>
+                    <%= image_tag micropost.image %>
+                        
+                    <% else %>
+                        <img src="https://source.unsplash.com/random/1280x960" alt="">
+                    <% end %>
                     </figure>
                 </div>
                 <div class="card-content">
@@ -50,6 +55,10 @@
                         <time datetime="2018-1-1">11:09 PM - 1 Jan 2018（<%= time_ago_in_words(micropost.created_at) %> ）</time>
                     </div>
                 </div>
+                    <% if current_user.id==micropost.user.id %>
+      <%= link_to "delete", micropost, method: :delete,
+                                       data: { confirm: "You sure?" } %>
+    <% end %>
                 <div class="card-footer">
                     <div class="columns is-mobile">
                         <div class="column is-11">
