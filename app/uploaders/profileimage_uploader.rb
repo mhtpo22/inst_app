@@ -25,7 +25,7 @@ class ProfileimageUploader < CarrierWave::Uploader::Base
   # end
 
   # Process files as they are uploaded:
-   process :resize_to_limit => [200, 200]
+   process :resize_to_limit => [96, 96]
    process :convert => 'jpg'
   #
   # def scale(width, height)
@@ -34,7 +34,7 @@ class ProfileimageUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
    version :thumb do
-     process :resize_to_fill => [40, 40, gravity = ::Magick::CenterGravity]
+     process :resize_to_fill => [96, 96, gravity = ::Magick::CenterGravity]
    end
 
   # Add a white list of extensions which are allowed to be uploaded.

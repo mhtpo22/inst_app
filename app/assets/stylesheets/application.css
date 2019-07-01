@@ -38,11 +38,11 @@
     animation-fill-mode: both;
 }
 
-
 /*Navigation Inner Styling*/
 
 .navbar {
     position: fixed;
+    padding:10px 0px 0px 10px;
     left: 0;
     top: 0;
     z-index: 2;
@@ -219,6 +219,7 @@ main {
  */
  li {
     list-style: none;
+    margin: 0.67em 0;
 }
 nav ol,
 nav ul {
