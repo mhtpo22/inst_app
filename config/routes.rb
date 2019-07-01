@@ -35,5 +35,7 @@ Rails.application.routes.draw do
   
   # 投稿用
   resources :microposts,          only: [:create, :destroy]
+  
+  resources :relationships,       only: [:create, :destroy]
 
 end
