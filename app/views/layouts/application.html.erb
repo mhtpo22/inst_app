@@ -4,9 +4,11 @@
 	<title><%= content_for?(:html_title) ? yield(:html_title) : "Default" %></title>
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<%= csrf_meta_tags %>
+	
 	<link rel="stylesheet" href="https://unpkg.com/bulma@0.7.5/css/bulma.min.css" />
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+	
 </head>
 <body>
 
