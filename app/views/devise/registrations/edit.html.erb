@@ -13,6 +13,12 @@
     <%= f.label :id %>*<br />
     <%= f.text_field :userid %>
   </div>
+  
+  <div class="field">
+    <%=f.label :profileimage,"ユーザー画像" %>
+      <%= f.file_field :profileimage %>
+  </div>
+  
 
   <div class="field">
     <%= f.label :Mail %>*<br />

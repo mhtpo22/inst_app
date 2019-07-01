@@ -7,7 +7,11 @@
                     <div class="media">
                         <div class="media-left">
                             <figure class="image is-48x48">
-                                <img src="https://source.unsplash.com/random/96x96" alt="Placeholder image">
+                                <% if micropost.user.profileimage %>
+                                    <%= image_tag micropost.user.profileimage %>  
+                                <% else %>
+                                    <img src="https://source.unsplash.com/random/96x96" alt="Placeholder image">
+                                <% end %>
                             </figure>
                         </div>
                         <div class="media-content">
@@ -18,12 +22,11 @@
                 </div>
                 <div class="card-image">
                     <figure class="image is-4by3">
-                    <% if micropost.image.url %>
-                    <%= image_tag micropost.image %>
-                        
-                    <% else %>
-                        <img src="https://source.unsplash.com/random/1280x960" alt="">
-                    <% end %>
+                        <% if micropost.image.url %>
+                            <%= image_tag micropost.image %>  
+                        <% else %>
+                            <img src="https://source.unsplash.com/random/1280x960" alt="">
+                        <% end %>
                     </figure>
                 </div>
                 <div class="card-content">
