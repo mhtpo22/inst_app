@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   # ホーム画面
   root 'pages#index'
 
@@ -37,5 +38,8 @@ Rails.application.routes.draw do
   resources :microposts,          only: [:create, :destroy]
   
   resources :relationships,       only: [:create, :destroy]
+  resources :microposts do
+    resources :likes, only: [:create, :destroy]
+  end
 
 end
