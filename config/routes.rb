@@ -2,8 +2,10 @@ Rails.application.routes.draw do
 
   # ホーム画面
   root 'pages#index'
+  get 'users' => 'pages#show'
 
-   devise_for :users, skip: :all
+  devise_for :users, skip: :all
+
   # 認証用
   devise_scope :user do
     # セッション
@@ -26,18 +28,21 @@ Rails.application.routes.draw do
     patch 'password' => 'devise/passwords#update'
     put 'password' => 'devise/passwords#update', as: :update_user_password
   end
- 
+
   # ユーザー画面
   resources :users, param: :userid, path: '/', only: [:show] do
     member do
       get :following, :followers
     end
   end
-  
+
   # 投稿用
-  resources :microposts,          only: [:create, :destroy]
-  
-  resources :relationships,       only: [:create, :destroy]
+  resources :microposts, only: [:create, :destroy]
+
+  # フォロー
+  resources :relationships, only: [:create, :destroy]
+
+  # お気に入り
   resources :microposts do
     resources :likes, only: [:create, :destroy]
   end
