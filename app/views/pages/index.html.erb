@@ -3,39 +3,39 @@
 <% content_for(:html_title) {  "ホーム" } %>
 
 <% if user_signed_in? %>
-    <div class="post_area">
-        <center>
-            <%= form_for(@micropost, html: { multipart: true }) do |f| %>
-                <div class="field" >
-                    <%= f.text_area :content, placeholder: "Compose new micropost..." %>
-                </div>
-                <div class="field" >
-                    <%= f.file_field :image %>
-                </div>
-                <%= f.submit "投稿", class: "btn btn-primary" %>
-            <% end %>
-        </center>
-    </div>
-    <p align="center">最新のツイート一覧</p>
-    <% if @feed_items.any? %>
-        <div class="columns is-multiline microposts">
-            <%= render @feed_items %>
+  <div class="post_area">
+    <center>
+      <%= form_for(@micropost, html: { multipart: true }) do |f| %>
+        <div class="field" >
+          <%= f.text_area :content, placeholder: "Compose new micropost..." %>
         </div>
-        <%= will_paginate @feed_items %>
-    <% end %>
+        <div class="field" >
+          <%= f.file_field :image %>
+        </div>
+        <%= f.submit "投稿", class: "btn btn-primary" %>
+      <% end %>
+    </center>
+  </div>
+  <p align="center">最新のツイート一覧</p>
+  <% if @feed_items.any? %>
+    <div class="columns is-multiline microposts">
+      <%= render @feed_items %>
+    </div>
+    <%= will_paginate @feed_items %>
+  <% end %>
 <% else %>
-    <section class="hero is-info is-fullheight">
-        <div class="hero-body">
-            <div class="container has-text-centered">
-                <div class="column is-6 is-offset-3">
-                    <h1 class="title">
-                        MiMiMi
-                    </h1>
-                    <h2 class="subtitle">
-                        this is the application like twitter and instagram 
-                        to interaction with people.
-                    </h2>
-                </div>
-            </div>
-    </section>
+  <section class="hero is-info is-fullheight">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <div class="column is-6 is-offset-3">
+          <h1 class="title">
+            MiMiMi
+          </h1>
+          <h2 class="subtitle">
+            this is the application like twitter and instagram 
+            to interaction with people.
+          </h2>
+        </div>
+      </div>
+  </section>
 <% end %>

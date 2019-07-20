@@ -1,80 +1,75 @@
 <div class="column is-one-third">
-    <div class="card">
-        <div class="header">
-            <div class="media">
-                <div class="media-left">
-                    <figure class="image is-48x48">
-                        <% if micropost.user.profileimage %>
-                            <%= image_tag micropost.user.profileimage %> 
-                        <% else %>
-                            <img src="https://source.unsplash.com/random/96x96" alt="Placeholder image">
-                        <% end %>
-                    </figure>
-                </div>
-                <div class="media-content">
-                    <p class="title is-4"><%= micropost.user.username %></p>
-                    <p class="subtitle is-6">@<%= link_to micropost.user.userid  ,user_path(micropost.user.userid)%></p>
-                </div>
-            </div>
-        </div>
-        <div class="card-image">
-            <figure class="image is-4by3">
-                <% if micropost.image.url %>
-                    <%= image_tag micropost.image %> 
-                <% else %>
-                    <img src="https://source.unsplash.com/random/1280x960" alt="">
-                <% end %>
-            </figure>
-        </div>
-        <div class="card-content">
-            <div class="level is-mobile">
-                <div class="level-left">
-                    <div class="level-item has-text-centered">
-                        <%= render 'microposts/like', micropost: micropost %>
-                    </div>
-                    <div class="level-item has-text-centered">
-                        <div>
-                            <a href="">
-                                <i class="material-icons">chat_bubble_outline</i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="content">
-                <p>
-                <strong>32 Likes</strong>
-                </p>
-                <%= micropost.content %>
-                <a>@bulmaio</a>.
-                <a href="#">#css</a>
-                <a href="#">#responsive</a>
-                <br>
-                <time datetime="2018-1-1">11:09 PM - 1 Jan 2018（<%= time_ago_in_words(micropost.created_at) %> ）</time>
-            </div>
-        </div>
-        <% if user_signed_in? %>
-             <% if current_user.id==micropost.user.id %>
-                <%= link_to "delete", micropost, method: :delete, data: { confirm: "You sure?" } %>
+  <div class="card">
+    <div class="header">
+      <div class="media">
+        <div class="media-left">
+          <figure class="image is-48x48">
+            <% if micropost.user.profileimage %>
+              <%= image_tag micropost.user.profileimage %>
+            <% else %>
+              <img src="https://source.unsplash.com/random/96x96" alt="Placeholder image">
             <% end %>
-        <% end %>
-        <div class="card-footer">
-            <div class="columns is-mobile">
-                <div class="column is-11">
-                    <div class="field">
-                        <div class="control">
-                            <input class="input is-medium" type="text" placeholder="Add a comment . . .">
-                        </div>
-                    </div>
-                </div>
-                <div class="column has-text-centered">
-                    <button class="button">
-                        <i class="material-icons">★</i>
-                    </button>
-                </div>
-            </div>
+          </figure>
         </div>
+        <div class="media-content">
+          <p class="title is-4"><%= micropost.user.username %></p>
+          <p class="subtitle is-6">@<%= link_to micropost.user.userid  ,user_path(micropost.user.userid)%></p>
+        </div>
+      </div>
     </div>
+    <div class="card-image">
+      <figure class="image is-4by3">
+        <% if micropost.image.url %>
+          <%= image_tag micropost.image %>
+        <% else %>
+          <img src="https://source.unsplash.com/random/1280x960" alt="">
+        <% end %>
+      </figure>
+    </div>
+    <div class="card-content">
+      <div class="level is-mobile">
+        <div class="level-left">
+          <div class="level-item has-text-centered">
+            <%= render 'microposts/like', micropost: micropost %>
+          </div>
+        </div>
+      </div>
+      <div class="content">
+        <p>
+
+        <% if micropost.likes_count %>
+          <strong><%= micropost.likes_count %> likes</strong></p>
+      <% else %>
+        <strong>0 Likes</strong>
+      <% end %>
+      </p>
+      <%= micropost.content %>
+      <br>
+      <time>(<%= time_ago_in_words(micropost.created_at) %>)</time>
+      </div>
+    </div>
+    <% if user_signed_in? %>
+      <% if current_user.id==micropost.user.id %>
+        <%= link_to "delete", micropost, method: :delete, data: { confirm: "You sure?" } %>
+      <% end %>
+    <% end %>
+    <div class="card-footer">
+      <div class="columns is-mobile">
+        <div class="column is-11">
+          <div class="field">
+            <div class="control">
+              <input class="input is-medium" type="text" placeholder="Add a comment . . .">
+            </div>
+          </div>
+        </div>
+        <div class="column has-text-centered">
+          <button class="button">
+            <i class="material-icons">★</i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 

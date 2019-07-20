@@ -1,14 +1,11 @@
 <% if user_signed_in? %>
-<% if micropost.like_user(current_user.id) %>
-        <%= button_to micropost_like_path(micropost.id,micropost_id: micropost.id), method: :delete, id: "like-button", remote: true do %>
-        ☆<%= image_tag("icon_heart.svg") %>
-
-        <% end %>
-<% else %>
-    <%= button_to micropost_likes_path(micropost_id: micropost.id), id: "like-button", remote: true do %>
-        ★<%= image_tag("icona_heart.svg") %>
-
+  <% if micropost.like_user(current_user.id) %>
+    <%= button_to micropost_like_path(micropost.id,micropost_id: micropost.id), method: :delete, id: "like-button", remote: true do %>
+      ★
     <% end %>
-
-<% end %>
+  <% else %>
+    <%= button_to micropost_likes_path(micropost_id: micropost.id), id: "like-button", remote: true do %>
+      ☆
+    <% end %>
+  <% end %>
 <% end %>
