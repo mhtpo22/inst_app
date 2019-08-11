@@ -1,24 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Name MMM
 
-Things you may want to cover:
+* Description ツイッターやインスタグラムを参考にして作成した。
 
-* Ruby version
+* Ruby version 2.5.0
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Services ログイン機能・新規投稿・投稿一覧・アップロード機能・フォロー・いいね機能
